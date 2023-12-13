@@ -1,10 +1,10 @@
 package main
 
 import (
-	"avenger-2/handler"
-	"avenger-2/sql"
 	"log"
 	"net/http"
+	"ugc-2/handler"
+	"ugc-2/sql"
 
 	_ "github.com/go-sql-driver/mysql"
 )

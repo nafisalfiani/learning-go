@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"avenger-2/entity"
 	"database/sql"
 	"encoding/json"
 	"log"
 	"net/http"
+	"ugc-2/entity"
 
 	_ "github.com/go-sql-driver/mysql"
 )
