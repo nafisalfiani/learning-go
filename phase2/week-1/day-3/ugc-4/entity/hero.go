@@ -1,9 +1,9 @@
 package entity
 
 type Hero struct {
-	Id       int
-	Name     string
-	Universe string
-	Skill    string
-	ImageURL string
+	Id       int    `json:"id"`
+	Name     string `json:"name"`
+	Universe string `json:"universe"`
+	Skill    string `json:"skill"`
+	ImageURL string `json:"image_url"`
 }

@@ -95,7 +95,7 @@ func UpdateInventory(db *sql.DB) httprouter.Handle {
 			return
 		}
 
-		w.WriteHeader(http.StatusNoContent)
+		w.WriteHeader(http.StatusAccepted)
 	}
 }
 
@@ -110,6 +110,6 @@ func DeleteInventory(db *sql.DB) httprouter.Handle {
 			return
 		}
 
-		w.WriteHeader(http.StatusNoContent)
+		w.WriteHeader(http.StatusOK)
 	}
 }

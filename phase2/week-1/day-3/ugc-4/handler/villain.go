@@ -12,7 +12,7 @@ import (
 
 func GetVillains(db *sql.DB) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-		rows, err := db.Query("SELECT name FROM villains")
+		rows, err := db.Query("SELECT id, name FROM villains")
 		if err != nil {
 			log.Println(err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -23,7 +23,7 @@ func GetVillains(db *sql.DB) httprouter.Handle {
 		var villains []entity.Villain
 		for rows.Next() {
 			var villain entity.Villain
-			if err := rows.Scan(&villain.Name); err != nil {
+			if err := rows.Scan(&villain.Id, &villain.Name); err != nil {
 				log.Println(err)
 				continue
 			}
@@ -61,7 +61,7 @@ func CreateVillain(db *sql.DB) httprouter.Handle {
 			return
 		}
 
-		_, err := db.Exec("INSERT INTO villains (name) VALUES (?, ?, ?, ?)", villain.Name)
+		_, err := db.Exec("INSERT INTO villains (name) VALUES (?)", villain.Name)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)

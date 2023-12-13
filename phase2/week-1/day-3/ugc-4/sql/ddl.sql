@@ -4,7 +4,6 @@ CREATE DATABASE marvel;
 
 USE marvel;
 
--- Create the "heroes" table
 CREATE TABLE IF NOT EXISTS heroes (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
@@ -13,7 +12,6 @@ CREATE TABLE IF NOT EXISTS heroes (
     ImageURL VARCHAR(255)
 );
 
--- Create the "villains" table
 CREATE TABLE IF NOT EXISTS villains (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
@@ -28,4 +26,13 @@ CREATE TABLE IF NOT EXISTS inventories (
     Stock INT NOT NULL,
     Description TEXT,
     Status ENUM('active', 'broken') NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS crimes (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Description TEXT,
+    HeroID INT,
+    VillainID INT,
+    StartedAt TIMESTAMP,
+    FinishedAt TIMESTAMP
 );
