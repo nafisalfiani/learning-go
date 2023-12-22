@@ -1,0 +1,25 @@
+host: localhost:8080
+info:
+  contact:
+    email: nafisa.alfiani.ica@gmail.com
+    name: Nafisa
+  description: This is a sample server celler server.
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: Ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Ping
+      tags:
+      - server
+swagger: "2.0"
