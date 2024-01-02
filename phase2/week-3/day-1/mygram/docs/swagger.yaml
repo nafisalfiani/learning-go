@@ -1,0 +1,139 @@
+definitions:
+  entity.HttpResp:
+    properties:
+      data: {}
+      error:
+        type: string
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  entity.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  entity.LoginResponse:
+    properties:
+      accessToken:
+        type: string
+      message:
+        type: string
+    type: object
+  entity.RegisterRequest:
+    properties:
+      address:
+        type: string
+      dateOfBirth:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+    type: object
+  entity.User:
+    properties:
+      age:
+        type: integer
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact:
+    email: nafisa.alfiani.ica@gmail.com
+    name: Nafisa Alfiani
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Login existing user
+      parameters:
+      - description: login request
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/entity.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/entity.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.HttpResp'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/entity.HttpResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.HttpResp'
+      summary: Login existing user
+      tags:
+      - auth
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register new user
+      parameters:
+      - description: register request
+        in: body
+        name: register
+        required: true
+        schema:
+          $ref: '#/definitions/entity.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/entity.HttpResp'
+            - properties:
+                data:
+                  $ref: '#/definitions/entity.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entity.HttpResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entity.HttpResp'
+      summary: Register new user
+      tags:
+      - auth
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
