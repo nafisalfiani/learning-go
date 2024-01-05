@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/swaggo/echo-swagger v1.4.1
-	github.com/swaggo/files v1.0.1
 	github.com/swaggo/swag v1.16.2
 )
 
