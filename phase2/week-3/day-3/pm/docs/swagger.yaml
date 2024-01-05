@@ -1,0 +1,35 @@
+definitions:
+  main.Resp:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact:
+    email: nafisa.alfiani.ica@gmail.com
+    name: Nafisa Alfiani
+paths:
+  /ping:
+    post:
+      consumes:
+      - application/json
+      description: Pong!
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Resp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.Resp'
+      summary: Pong!
+      tags:
+      - server
+swagger: "2.0"

@@ -18,6 +18,16 @@ const (
 )
 
 // Register allow new user to register their account info
+//
+// @Summary Register new user
+// @Description Allow new user to register their account info
+// @Tags users
+// @Accept json
+// @Produce json
+// @Success 200 {object} entity.HttpResp{data=entity.RegisterResponse}
+// @Failure 400 {object} entity.HttpResp
+// @Failure 500 {object} entity.HttpResp
+// @Router /users/register [post]
 func (h *Handler) Register(c echo.Context) error {
 	user := entity.User{}
 	resp := entity.RegisterResponse{}
@@ -45,7 +55,17 @@ func (h *Handler) Register(c echo.Context) error {
 	return httpSuccess(c, http.StatusCreated, resp)
 }
 
-// Login allow existing user to login to university system
+// Login allow existing user to login to avengers commerce system
+//
+// @Summary Login existing user
+// @Description Allow existing user to login to avengers commerce system
+// @Tags users
+// @Accept json
+// @Produce json
+// @Success 200 {object} entity.HttpResp{data=entity.LoginResponse}
+// @Failure 400 {object} entity.HttpResp
+// @Failure 500 {object} entity.HttpResp
+// @Router /users/register [post]
 func (h *Handler) Login(c echo.Context) error {
 	loginReq := entity.LoginRequest{}
 	resp := entity.LoginResponse{}
